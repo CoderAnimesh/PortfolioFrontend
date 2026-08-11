@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ExternalLink, Github, Star, GitFork, Sparkles, Code2 } from "lucide-react";
 
 interface Repo {
@@ -260,8 +260,6 @@ export default function Projects() {
           {/* CURATED PRO PROJECTS (Fallback & API Hybrid) */}
           {!loading && useFallback &&
             filteredCurated.map((project, idx) => {
-              const totalLangBytes = Object.values(project.languages).reduce((a, b) => a + b, 0);
-
               return (
                 <motion.div
                   key={project.id}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, LogIn, Sparkles, FileText } from "lucide-react";
+import { Menu, X, LogIn, FileText } from "lucide-react";
 
 interface NavLink {
   name: string;

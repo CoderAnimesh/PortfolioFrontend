@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import profileImg from "/img.jpg";
 import LiquidEther from "./LiquidEther";
-import { Music, Pause, Play, Download, Sparkles, Code, Cpu, Globe, ArrowDownRight } from "lucide-react";
+import { Music, Pause, Play, Download, Code, Cpu, Globe, ArrowDownRight } from "lucide-react";
 
 export default function Hero() {
   const [showAlert, setShowAlert] = useState(false);

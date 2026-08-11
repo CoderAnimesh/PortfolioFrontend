@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Award, Briefcase, Calendar, CheckCircle2, Rocket, Zap, Users, Code } from "lucide-react";
+import { Award, Briefcase, Calendar, CheckCircle2, Rocket, Users, Code } from "lucide-react";
 
 interface TimelineItem {
   year: string;
