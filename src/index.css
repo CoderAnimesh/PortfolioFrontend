@@ -355,6 +355,10 @@ button:hover {
     display: none !important;
   }
 
+  .desktop-music-btn {
+    display: none !important;
+  }
+
   .hamburger {
     display: flex !important;
   }

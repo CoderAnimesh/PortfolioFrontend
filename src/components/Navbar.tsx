@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, LogIn, FileText } from "lucide-react";
+import { Menu, X, LogIn, FileText, Music, Pause, Play } from "lucide-react";
 
 interface NavLink {
   name: string;
@@ -21,7 +21,23 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [isPlaying, setIsPlaying] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleMusicStatus = (e: any) => {
+      if (e.detail && typeof e.detail.playing === "boolean") {
+        setIsPlaying(e.detail.playing);
+      }
+    };
+    window.addEventListener("music-status", handleMusicStatus);
+    return () => window.removeEventListener("music-status", handleMusicStatus);
+  }, []);
+
+  const toggleMusic = () => {
+    window.dispatchEvent(new CustomEvent("toggle-music"));
+    setIsPlaying((prev) => !prev);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -302,6 +318,30 @@ export default function Navbar() {
                 margin: "4px 0",
               }}
             />
+            {/* MOBILE MUSIC TOGGLE BUTTON */}
+            <button
+              onClick={toggleMusic}
+              style={{
+                width: "100%",
+                padding: "10px 16px",
+                borderRadius: 14,
+                background: "rgba(0, 255, 204, 0.08)",
+                border: "1px solid rgba(0, 255, 204, 0.3)",
+                color: "#00ffcc",
+                fontWeight: 600,
+                fontSize: "0.95rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 10,
+                cursor: "pointer",
+              }}
+            >
+              <Music size={18} />
+              {isPlaying ? "Pause Music" : "Play Music"}
+              {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+            </button>
+
             <button
               onClick={handleLogin}
               style={{

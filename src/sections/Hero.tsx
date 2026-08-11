@@ -36,12 +36,22 @@ export default function Hero() {
     if (playing) {
       audio.pause();
       setPlaying(false);
+      window.dispatchEvent(new CustomEvent("music-status", { detail: { playing: false } }));
     } else {
       audio.muted = false;
       audio.play().catch(() => console.log("Play blocked"));
       setPlaying(true);
+      window.dispatchEvent(new CustomEvent("music-status", { detail: { playing: true } }));
     }
   };
+
+  useEffect(() => {
+    const handleToggle = () => {
+      toggleMusic();
+    };
+    window.addEventListener("toggle-music", handleToggle);
+    return () => window.removeEventListener("toggle-music", handleToggle);
+  }, [playing]);
 
   const scrollToProjects = () => {
     const el = document.getElementById("projects");
@@ -81,9 +91,10 @@ export default function Hero() {
         {/* 🎵 BACKGROUND AUDIO PLAYER */}
         <audio ref={audioRef} src="/tech-background.mp3" loop autoPlay />
 
-        {/* 🎵 MUSIC FLOATING CONTROL BUTTON */}
+        {/* 🎵 MUSIC FLOATING CONTROL BUTTON (Desktop Only) */}
         <motion.button
           onClick={toggleMusic}
+          className="desktop-music-btn"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           style={{
