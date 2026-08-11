@@ -113,24 +113,18 @@ export default function Hero() {
 
         {/* MAIN HERO CONTENT GRID */}
         <div
-          className="hero-content"
+          className="hero-content hero-grid"
           style={{
             position: "relative",
             zIndex: 2,
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 60,
-            alignItems: "center",
-            width: "100%",
-            maxWidth: 1200,
           }}
         >
           {/* LEFT COLUMN: INTRO TEXT & CTA */}
           <motion.div
+            className="hero-left"
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            style={{ textAlign: "left" }}
           >
             {/* Status Badge */}
             <div style={{ marginBottom: 20 }}>
@@ -190,6 +184,7 @@ export default function Hero() {
 
             {/* Action Buttons */}
             <div
+              className="hero-cta-group"
               style={{
                 marginTop: 36,
                 display: "flex",
@@ -272,15 +267,10 @@ export default function Hero() {
 
           {/* RIGHT COLUMN: HOLOGRAPHIC PROFILE FRAME */}
           <motion.div
+            className="hero-right"
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              position: "relative",
-            }}
           >
             {/* Holographic Glowing Outer Rings */}
             <div

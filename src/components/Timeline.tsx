@@ -139,9 +139,9 @@ export default function Timeline() {
         <div ref={ref} style={{ position: "relative", marginTop: 60, paddingBottom: 40 }}>
           {/* Static Background Beam Line */}
           <div
+            className="timeline-line-bg"
             style={{
               position: "absolute",
-              left: 28,
               top: 0,
               width: 3,
               height: lineHeight > 0 ? lineHeight : "100%",
@@ -152,9 +152,9 @@ export default function Timeline() {
 
           {/* Animated Glowing Fill Beam Line */}
           <motion.div
+            className="timeline-line-fill"
             style={{
               position: "absolute",
-              left: 28,
               top: 0,
               width: 3,
               height: heightTransform,
@@ -175,23 +175,17 @@ export default function Timeline() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "60px 1fr",
-                    gap: 24,
-                    alignItems: "flex-start",
-                  }}
+                  className="timeline-grid"
                 >
                   {/* Sticky Node Indicator */}
                   <div
+                    className="timeline-node"
                     style={{
                       position: "relative",
                       zIndex: 10,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      width: 58,
-                      height: 58,
                       borderRadius: "50%",
                       background: "rgba(13, 17, 23, 0.9)",
                       border: "2px solid rgba(0, 255, 204, 0.4)",
